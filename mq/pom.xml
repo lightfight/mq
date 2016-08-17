@@ -14,6 +14,7 @@
 		<spring.version>3.1.1.RELEASE</spring.version>
 	</properties>
 
+	<!-- ref:http://blog.csdn.net/yuguiyang1990/article/details/12714291 -->
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
