@@ -17,7 +17,8 @@ public class Client {
 		LogbackConfig.init(); // 创建日志
 		
 		Producer producer = SpringContext.getBean("producer");
-		MLContainers mLContainers = SpringContext.getBean("MLContainers");
+		MLContainers mLContainers = SpringContext.getBean("MLContainers"); // 在创建默认bean名称的时候如果第二个字母是大写,第一个字母不会小写
+		//Pre-instantiating singletons in DefaultListableBeanFactory@13dbee4: defining beans [consumer,MLContainers,producer,
 		
 		String qnamesStr = ConfigProperties.getStr("qname");
 		String[] qnames = qnamesStr.split(","); // Queue Names
