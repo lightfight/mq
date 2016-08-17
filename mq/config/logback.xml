@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- logback-1.1.3\logback-1.1.3\logback-examples\src\main\java\chapters\configuration -->
+<!-- http://blog.csdn.net/dengsilinming/article/details/8265020 -->
+<!-- 在根元素configuration中配置属性scan="true"后，当配置文件修改后自动重新加载，默认每分钟扫描一次[milliseconds、seconds、minutes和hours] -->
+<configuration scan="true" scanPeriod="10 minutes">
+
+	<contextName>logbacktest</contextName>
+
+	<!-- 控制台的标准输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[STDOUT]%date [%thread] %-5level %logger.%L - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<!-- 按照时间进行滚动,如果时间[yyyy-MM-dd-HH]不存在就会新创建一个文件,可以达到每个小时[yyyy-MM-dd-HH],每天[yyyy-MM-dd]创建一个文件 -->
+	<appender name="runtimeLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/runtimeLog.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/runtimeLog-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%date [FILE] %-5level %logger.%L - %msg%n</pattern>
+		</encoder>
+
+	</appender>
+	
+	<logger name="org.springframework" level="INFO"/>
+	
+	<!-- 根的等级,和输出参考 -->
+	<root level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+	<!-- 配置每一个命名空间的输出等级 -->
+	<logger name="com.lightfight" level="INFO" additivity="true">
+		<appender-ref ref="runtimeLog" />
+	</logger>
+
+</configuration>
+
