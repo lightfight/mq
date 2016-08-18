@@ -9,6 +9,7 @@
 
 	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL">
+			<!-- http://localhost:8161 -->
 			<value>nio://192.168.1.223:61616</value>
 		</property>
 	</bean>
