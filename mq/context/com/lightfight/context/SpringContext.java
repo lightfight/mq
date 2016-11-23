@@ -1,8 +1,6 @@
 package com.lightfight.context;
 
 import java.io.File;
-import java.net.SocketAddress;
-import java.rmi.Remote;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -19,16 +17,14 @@ public class SpringContext {
 		return factory;
 	}
 
-	@SuppressWarnings("unchecked")
-	public static <T> T getBean(String beanName) {
-		return (T)ctx.getBean(beanName);
-	}
-
-	public static SocketAddress getBindSocketSide() {
-		return (SocketAddress) ctx.getBean("socketSide");
-	}
-
-	public static Remote getRemoteBO(String remoteName) {
-		return (Remote) ctx.getBean(remoteName);
+	/**
+	 * 采用class的方式可以避免使用名称命名带来的书写问题<BR>
+	 * 在创建默认bean名称的时候如果第二个字母是大写,第一个字母不会小写<BR>
+	 * 
+	 * @param clazz
+	 * @return
+	 */
+	public static <T> T getBean(Class<T> clazz) {
+		return (T) ctx.getBean(clazz);
 	}
 }

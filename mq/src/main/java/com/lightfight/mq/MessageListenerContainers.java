@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class MLContainers {
+public class MessageListenerContainers {
 
 	@Resource
 	PooledConnectionFactory pooledConnectionFactory;
@@ -24,12 +24,15 @@ public class MLContainers {
 	
 	public void init(String[] qnames){
 		for (String item : qnames) { // 有多少个队列就创建多少个消息监听
+			
 			DefaultMessageListenerContainer container = new DefaultMessageListenerContainer();
-			container.setConnectionFactory(pooledConnectionFactory);
+			
 			container.setPubSubDomain(false);
 			container.setDestination(new ActiveMQQueue(item));
-			container.setMessageListener(consumer);
 			container.setSessionTransacted(false);
+			
+			container.setConnectionFactory(pooledConnectionFactory);
+			container.setMessageListener(consumer);
 			container.initialize();
 			
 			container.start();
