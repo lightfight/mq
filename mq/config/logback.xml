@@ -10,7 +10,7 @@
 	<!-- 控制台的标准输出 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>[STDOUT]%date [%thread] %-5level %logger.%L - %msg%n</pattern>
+			<pattern>[STDOUT]%date [%thread] %-5level %logger.%M.%L - %msg%n</pattern>
 		</encoder>
 	</appender>
 
@@ -26,7 +26,7 @@
 		</rollingPolicy>
 
 		<encoder>
-			<pattern>%date [FILE] %-5level %logger.%L - %msg%n</pattern>
+			<pattern>%date [FILE] %-5level %logger.%M.%L - %msg%n</pattern>
 		</encoder>
 
 	</appender>
