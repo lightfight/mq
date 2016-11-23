@@ -1,2 +1,4 @@
 2016-11-23 11:29:48,499 [FILE] INFO  com.lightfight.context.LogbackConfig.25 - LogbackConfig init successfully!
 2016-11-23 11:31:05,047 [FILE] INFO  com.lightfight.context.LogbackConfig.init.25 - LogbackConfig init successfully!
+2016-11-23 11:39:13,971 [FILE] INFO  com.lightfight.context.LogbackConfig.init.25 - LogbackConfig init successfully!
+2016-11-23 11:39:48,339 [FILE] INFO  com.lightfight.context.LogbackConfig.init.25 - LogbackConfig init successfully!
